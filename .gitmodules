@@ -1,0 +1,3 @@
+[submodule "backend/tool-service"]
+	path = backend/tool-service
+	url = https://gitlab.w-hs.de/DevDynasty/eai/tool-service.git
