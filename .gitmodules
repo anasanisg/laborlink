@@ -4,3 +4,6 @@
 [submodule "backend/activity-service"]
 	path = backend/activity-service
 	url = https://gitlab.w-hs.de/DevDynasty/eai/activity-service
+[submodule "backend/invoice-service"]
+	path = backend/invoice-service
+	url = https://gitlab.w-hs.de/DevDynasty/eai/invoice-service
