@@ -10,3 +10,6 @@
 [submodule "backend/renting-machine-service"]
 	path = backend/renting-machine-service
 	url = https://gitlab.w-hs.de/DevDynasty/eai/renting-machine-service
+[submodule "backend/jobs/rental-flow-jobs"]
+	path = backend/jobs/rental-flow-jobs
+	url = https://gitlab.w-hs.de/DevDynasty/eai/rental-flow-jobs
