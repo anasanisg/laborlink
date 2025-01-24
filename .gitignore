@@ -1,1 +1,6 @@
 .DS_STORE
+backend/kafka/
+backend/flink/
+backend/keycloak/
+logs/
+out/
