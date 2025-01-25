@@ -74,7 +74,7 @@ git clone https://gitlab.w-hs.de/DevDynasty/eai/laborlink.git
 
 ```bash
 # To Initialize the Submodules please run
-git clone https://gitlab.w-hs.de/DevDynasty/eai/laborlink.git
+git submodule update --init --recursive --remote
 ```
 
 ### Install External Servers
@@ -181,10 +181,7 @@ Step 8: A *Valid redirect URIs* should be our frontend which is http://localhost
 ### Configure & Start Kafka 
 Kafka acts as a centralized hub or a communication backbone in Laborlink. Its the main components that connect the internal services with each other.
 
-```bash
-# To generate a random-uuid and format the storage of kafka
-make prepare-kafka
-```
+
 
 ```bash
 # To generate a random-uuid and format the storage of kafka
