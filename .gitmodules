@@ -22,3 +22,6 @@
 [submodule "frontend/renting-machine-monitor"]
 	path = frontend/renting-machine-monitor
 	url = https://gitlab.w-hs.de/DevDynasty/eai/renting-machine-monitor
+[submodule "frontend/labor-dashboard"]
+	path = frontend/labor-dashboard
+	url = https://gitlab.w-hs.de/DevDynasty/eai/labor-dashboard
