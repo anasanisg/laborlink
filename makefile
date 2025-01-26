@@ -93,7 +93,8 @@ package-gateway:
 
 
 run-gateway:
-	java -jar $(OUTPUT)/gateway-1.0.0.jar
+	mkdir -p $(OUTPUT)
+	java -jar $(OUTPUT)/gateway-1.0.0.jar > $(LOGS)/gateway.log 2>&1
 
 
 
@@ -152,4 +153,4 @@ install-is-deps:
 	
 run-is:
 	mkdir -p $(LOGS)
-	@cd $(IS) && env/bin/python manage.py > ../../$(LOGS)/invoice-service.log 2>&1
+	@cd $(IS) && env/bin/python manage.py run > ../../$(LOGS)/invoice-service.log 2>&1
