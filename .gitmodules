@@ -16,3 +16,6 @@
 [submodule "backend/gateway"]
 	path = backend/gateway
 	url = https://gitlab.w-hs.de/DevDynasty/eai/gateway
+[submodule "backend/card-service"]
+	path = backend/card-service
+	url = https://gitlab.w-hs.de/DevDynasty/eai/card-service
