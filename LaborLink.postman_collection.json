@@ -1,0 +1,594 @@
+{
+	"info": {
+		"_postman_id": "db9e142b-88c0-4023-b6b6-6bde92e1a557",
+		"name": "LaborLink",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "30602922"
+	},
+	"item": [
+		{
+			"name": "gateway",
+			"item": [
+				{
+					"name": "admin-api",
+					"item": [
+						{
+							"name": "Create Tool",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "eyJhbGciOiJSUzI1NiIsInR5cCIgOiAiSldUIiwia2lkIiA6ICJqTmpwS3lSSjdPYU5TM1AwSkhrTVB5LUk5SURpRzNTcWdyckNWOS0zOXJjIn0.eyJleHAiOjE3Mzc5MjU2MzUsImlhdCI6MTczNzkyNTMzNSwiYXV0aF90aW1lIjoxNzM3OTI1MzM0LCJqdGkiOiI3MDE3MGNhYS02OTlhLTQwYzAtODYyNy00MTE1NmUzNjk4MTgiLCJpc3MiOiJodHRwOi8vbG9jYWxob3N0OjgwODAvcmVhbG1zL2xhYm9ybGluayIsImF1ZCI6ImFjY291bnQiLCJzdWIiOiI1NDNjMjA2Yy04NWU3LTQwOTYtOTQzYi1jYWYxMmEyMzlmMjUiLCJ0eXAiOiJCZWFyZXIiLCJhenAiOiJ1c2VyLWNsaWVudCIsInNpZCI6ImEyZGUxOTU3LWVhNTAtNGViYi05MTZhLTA5YjY0Mjk0NTlkMyIsImFjciI6IjEiLCJhbGxvd2VkLW9yaWdpbnMiOlsiaHR0cDovL2xvY2FsaG9zdDozMDAwIl0sInJlYWxtX2FjY2VzcyI6eyJyb2xlcyI6WyJsYWJvci1tYW5hZ2VyIiwibGFib3ItdXNlciIsIm9mZmxpbmVfYWNjZXNzIiwidW1hX2F1dGhvcml6YXRpb24iLCJkZWZhdWx0LXJvbGVzLWxhYm9ybGluayJdfSwicmVzb3VyY2VfYWNjZXNzIjp7ImFjY291bnQiOnsicm9sZXMiOlsibWFuYWdlLWFjY291bnQiLCJtYW5hZ2UtYWNjb3VudC1saW5rcyIsInZpZXctcHJvZmlsZSJdfX0sInNjb3BlIjoicHJvZmlsZSBlbWFpbCIsImVtYWlsX3ZlcmlmaWVkIjpmYWxzZSwibmFtZSI6ImFuYXMgYW5zcyIsInByZWZlcnJlZF91c2VybmFtZSI6ImFuYXMiLCJnaXZlbl9uYW1lIjoiYW5hcyIsImZhbWlseV9uYW1lIjoiYW5zcyIsImVtYWlsIjoiYW5hc0BhbmFzLmNvbSJ9.LVWOXU_awjmT4DuaHAEgeAIks2ZRk7Twel4oK2fvOqRR2AV40iK6JMxGPEtqeIN2j_dNCSX07L1Nj_3-Ax7GxLE0yA0TJXlCp8YN5XbeYWjBSkQqABXvmbIFX0yZ7rTfpoJ0D8p2eqTVxvF0zDe-cwSbp7WlWDATZNGjbhjHHZMbswc177x6PpyA1rwtFVc3RsXI-nhUjIRaHdYDrkYa4dcBRXPCxCFZP7DPxBkcYbKLMa1BAcXQWR2Eg3uUigXuyidyJOzLnbo1KTC3wq5FFJpjjmmoj6FlbU_Qg1U8g9gTYaw2uAxoQw5cD18NdLsexBBKx_5XcLU462BBJG8cFg",
+											"type": "string"
+										}
+									]
+								},
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"toolName\": \"tool1\",\n    \"description\": \"tool1 description\",\n    \"img\": \"https://example.com/images/drill.jpg\",\n    \"pricePerSecond\":1,\n    \"quantity\": 100,\n    \"toolStatus\": 0 /*GOOD or 0, TO_BE_REPLACED or 1,BROKEN or 2, NOT_AVAILABLE or 3, NOT_SET or 4 */\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{gateway}}/tool",
+									"host": [
+										"{{gateway}}"
+									],
+									"path": [
+										"tool"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Update Tool By Id",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "eyJhbGciOiJSUzI1NiIsInR5cCIgOiAiSldUIiwia2lkIiA6ICJqTmpwS3lSSjdPYU5TM1AwSkhrTVB5LUk5SURpRzNTcWdyckNWOS0zOXJjIn0.eyJleHAiOjE3Mzc4ODA3NjUsImlhdCI6MTczNzg4MDQ2NSwiYXV0aF90aW1lIjoxNzM3ODgwNDY1LCJqdGkiOiJiOGNhMTI5OS02NWRmLTQwZGEtOWEwMS0yN2QxNGIyNDhhMmIiLCJpc3MiOiJodHRwOi8vbG9jYWxob3N0OjgwODAvcmVhbG1zL2xhYm9ybGluayIsImF1ZCI6ImFjY291bnQiLCJzdWIiOiJiNmIwZDg0MC05YjYxLTRlYTYtYTU1MS02MTk4ZmFiZTRmYmIiLCJ0eXAiOiJCZWFyZXIiLCJhenAiOiJ1c2VyLWNsaWVudCIsInNpZCI6IjkwMDM5OTQ3LWNkYjgtNDI4OS04MDI3LWVmZjFmMmIzMmRkOSIsImFjciI6IjEiLCJhbGxvd2VkLW9yaWdpbnMiOlsiaHR0cDovL2xvY2FsaG9zdDozMDAwIl0sInJlYWxtX2FjY2VzcyI6eyJyb2xlcyI6WyJsYWJvci11c2VyIiwib2ZmbGluZV9hY2Nlc3MiLCJ1bWFfYXV0aG9yaXphdGlvbiIsImRlZmF1bHQtcm9sZXMtbGFib3JsaW5rIl19LCJyZXNvdXJjZV9hY2Nlc3MiOnsiYWNjb3VudCI6eyJyb2xlcyI6WyJtYW5hZ2UtYWNjb3VudCIsIm1hbmFnZS1hY2NvdW50LWxpbmtzIiwidmlldy1wcm9maWxlIl19fSwic2NvcGUiOiJwcm9maWxlIGVtYWlsIiwiZW1haWxfdmVyaWZpZWQiOmZhbHNlLCJuYW1lIjoicG9wbyBwb3BvIiwicHJlZmVycmVkX3VzZXJuYW1lIjoicG9wbyIsImdpdmVuX25hbWUiOiJwb3BvIiwiZmFtaWx5X25hbWUiOiJwb3BvIiwiZW1haWwiOiJwb3BvQGdtYWlsLmNvbSJ9.OYXpfrLZw7sup8oVQ_Rul-NgJaJlZUaPe2A5AQT3MQow_iwX7YKfsYA63cDa27njQTpBGQFGQt_apvkg0Twx4nzMqP8BRu9nOgCX_3iFe2u7GYAzx6qrULiFktvb6h-aNIsjFRdPxYsfkF6ZZmMwrvdCdfBucNTLPaHeVj3rm7k4OCohHG6ep8M6Bq3X_8K_wYX1WNhOu8RVbFcVvH1mGy6xs80ExUEt6EnNWpiyIWebLvyXRK66d4cIlblPJAVIfy3bmjLaMKBZ0vK_QfwI5aL8Ao-t3fmRoWF8aHvA4wKp-vZuyX3QH2Uwv6JJgcvD3QWWQHj6xdom0-1kvleD1g",
+											"type": "string"
+										}
+									]
+								},
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"description\": \"updatedTool\",\n    \"img\":\"updatedImage\",\n    \"quantity\":20,\n    \"pricePerMinute\":10,\n    \"toolStatus\":2 /*GOOD or 0, TO_BE_REPLACED or 1,BROKEN or 2, NOT_AVAILABLE or 3, NOT_SET or 4 */\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{gateway}}/tool/1",
+									"host": [
+										"{{gateway}}"
+									],
+									"path": [
+										"tool",
+										"1"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "obtain card",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJSUzI1NiIsInR5cCIgOiAiSldUIiwia2lkIiA6ICJqTmpwS3lSSjdPYU5TM1AwSkhrTVB5LUk5SURpRzNTcWdyckNWOS0zOXJjIn0.eyJleHAiOjE3Mzc4Nzc0MTgsImlhdCI6MTczNzg3NzExOCwiYXV0aF90aW1lIjoxNzM3ODc3MTE3LCJqdGkiOiIzNzk2ZDUxNy0wZGRjLTQyODktYmI3Mi1lMTEwMmYwYzM2ODgiLCJpc3MiOiJodHRwOi8vbG9jYWxob3N0OjgwODAvcmVhbG1zL2xhYm9ybGluayIsImF1ZCI6ImFjY291bnQiLCJzdWIiOiJiNmIwZDg0MC05YjYxLTRlYTYtYTU1MS02MTk4ZmFiZTRmYmIiLCJ0eXAiOiJCZWFyZXIiLCJhenAiOiJ1c2VyLWNsaWVudCIsInNpZCI6IjQ0YTIxODlmLWJiNzgtNGFkYy1hOWQ3LTdjNDk5YmY5OGYzMiIsImFjciI6IjEiLCJhbGxvd2VkLW9yaWdpbnMiOlsiaHR0cDovL2xvY2FsaG9zdDozMDAwIl0sInJlYWxtX2FjY2VzcyI6eyJyb2xlcyI6WyJsYWJvci11c2VyIiwib2ZmbGluZV9hY2Nlc3MiLCJ1bWFfYXV0aG9yaXphdGlvbiIsImRlZmF1bHQtcm9sZXMtbGFib3JsaW5rIl19LCJyZXNvdXJjZV9hY2Nlc3MiOnsiYWNjb3VudCI6eyJyb2xlcyI6WyJtYW5hZ2UtYWNjb3VudCIsIm1hbmFnZS1hY2NvdW50LWxpbmtzIiwidmlldy1wcm9maWxlIl19fSwic2NvcGUiOiJwcm9maWxlIGVtYWlsIiwiZW1haWxfdmVyaWZpZWQiOmZhbHNlLCJuYW1lIjoicG9wbyBwb3BvIiwicHJlZmVycmVkX3VzZXJuYW1lIjoicG9wbyIsImdpdmVuX25hbWUiOiJwb3BvIiwiZmFtaWx5X25hbWUiOiJwb3BvIiwiZW1haWwiOiJwb3BvQGdtYWlsLmNvbSJ9.MXYgYr-QCJryujgNQZ_2WfH8MKmzEJiEcnqjBiuLLxGbyYQNPbCMmuXklo-VmeOtkShQgZddfkzjU2ACwLAS1OjvU63B8WHtwrMfuc_gFaODBPjUNyXwynzo1WcvQgME2N-rWOmeRQQi5wZ5VRiTIjIQS6vRwgd5yPTkZHC7TiJQwRjiAsB4mNidu3X0S1tOynequNvEQrzoJG6P8i2seuZVPWpH-Z8RsdjFikXpfdoW-7yTNquYCUOb-lndmUJnYwSBJI8cyObzt0cELv_JF0WikW_8-UjTbpNfhKSk7S6omcJm4eGH0143z9pdXnCHiZvncS9abomJdWuSy4NEog",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"username\":\"anas\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{gateway}}/obtain",
+							"host": [
+								"{{gateway}}"
+							],
+							"path": [
+								"obtain"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Tool By Id",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJSUzI1NiIsInR5cCIgOiAiSldUIiwia2lkIiA6ICJ1c3ZxZWdESG5xR2lndFZSRHZhVXpua2NjeE43VE9sWEhuZ1dmX09QWkVFIn0.eyJleHAiOjE3Mzc2NjA5NTcsImlhdCI6MTczNzY1OTE1NywiYXV0aF90aW1lIjoxNzM3NjU5MTIyLCJqdGkiOiJkZTRiMTRjNi1hMjkzLTQyZjYtOTM4NS1lMTBkMDMzZjMyMWIiLCJpc3MiOiJodHRwOi8vbG9jYWxob3N0OjgwODAvcmVhbG1zL2xhYm9ybGluayIsImF1ZCI6ImFjY291bnQiLCJzdWIiOiI1YWU1MDFmMy0xMmQwLTRjZGEtYjVlYi0xMDNmMjBlNDdkYWUiLCJ0eXAiOiJCZWFyZXIiLCJhenAiOiJ1c2VyLWNsaWVudCIsInNpZCI6ImQzZDE0NTJjLWU4MTAtNDBmMy05ZmVhLTFkMjM4YTgyYzJiOSIsImFjciI6IjEiLCJhbGxvd2VkLW9yaWdpbnMiOlsiLyoiXSwicmVhbG1fYWNjZXNzIjp7InJvbGVzIjpbImxhYm9yLXVzZXIiLCJsYWJvci1tYW5hZ2VyIiwib2ZmbGluZV9hY2Nlc3MiLCJkZWZhdWx0LXJvbGVzLWxhYm9ybGluayIsInVtYV9hdXRob3JpemF0aW9uIl19LCJyZXNvdXJjZV9hY2Nlc3MiOnsiYWNjb3VudCI6eyJyb2xlcyI6WyJtYW5hZ2UtYWNjb3VudCIsIm1hbmFnZS1hY2NvdW50LWxpbmtzIiwidmlldy1wcm9maWxlIl19fSwic2NvcGUiOiJwcm9maWxlIGVtYWlsIiwiZW1haWxfdmVyaWZpZWQiOmZhbHNlLCJuYW1lIjoiYW5hcyBhbmFzIiwicHJlZmVycmVkX3VzZXJuYW1lIjoiYW5hcyIsImdpdmVuX25hbWUiOiJhbmFzIiwiZmFtaWx5X25hbWUiOiJhbmFzIiwiZW1haWwiOiJhbmFzQGdtYWlsLmNvbSJ9.mncBAneZVa_z0moSJCnauP6AUg4ox9BfCSiPwDl4tYXrW1svCIBsat0cMK65QYxOTsHJ0cD0MWjklQM7H-t4IlJHovXW2NMI2LeuSkbFtfH24h2wlxBYxD5OQanhx8AVMIpyUJEYwvJl1szxfScjY1r8kNkbIoqNLqqXWuwn8jXYx5hOabSGtfgLk8_wTy-0_15eKMG0tTZ5CKmvsH4QJrlDe6v5HY01P1WJFbz9Y-d676vWtBA_exUcbJa5lOa9KIVdqyEQYRz6lgI6h_s8NI76LsIUo5rM0qNkbqQ-CEECxdwuPgT05H-RzFfi9FU13p9OAK6P0mapZLbELkXttQ",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{gateway}}/tool/1",
+							"host": [
+								"{{gateway}}"
+							],
+							"path": [
+								"tool",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get All Tool In Labor",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJSUzI1NiIsInR5cCIgOiAiSldUIiwia2lkIiA6ICJqTmpwS3lSSjdPYU5TM1AwSkhrTVB5LUk5SURpRzNTcWdyckNWOS0zOXJjIn0.eyJleHAiOjE3Mzc4ODA3NjUsImlhdCI6MTczNzg4MDQ2NSwiYXV0aF90aW1lIjoxNzM3ODgwNDY1LCJqdGkiOiJiOGNhMTI5OS02NWRmLTQwZGEtOWEwMS0yN2QxNGIyNDhhMmIiLCJpc3MiOiJodHRwOi8vbG9jYWxob3N0OjgwODAvcmVhbG1zL2xhYm9ybGluayIsImF1ZCI6ImFjY291bnQiLCJzdWIiOiJiNmIwZDg0MC05YjYxLTRlYTYtYTU1MS02MTk4ZmFiZTRmYmIiLCJ0eXAiOiJCZWFyZXIiLCJhenAiOiJ1c2VyLWNsaWVudCIsInNpZCI6IjkwMDM5OTQ3LWNkYjgtNDI4OS04MDI3LWVmZjFmMmIzMmRkOSIsImFjciI6IjEiLCJhbGxvd2VkLW9yaWdpbnMiOlsiaHR0cDovL2xvY2FsaG9zdDozMDAwIl0sInJlYWxtX2FjY2VzcyI6eyJyb2xlcyI6WyJsYWJvci11c2VyIiwib2ZmbGluZV9hY2Nlc3MiLCJ1bWFfYXV0aG9yaXphdGlvbiIsImRlZmF1bHQtcm9sZXMtbGFib3JsaW5rIl19LCJyZXNvdXJjZV9hY2Nlc3MiOnsiYWNjb3VudCI6eyJyb2xlcyI6WyJtYW5hZ2UtYWNjb3VudCIsIm1hbmFnZS1hY2NvdW50LWxpbmtzIiwidmlldy1wcm9maWxlIl19fSwic2NvcGUiOiJwcm9maWxlIGVtYWlsIiwiZW1haWxfdmVyaWZpZWQiOmZhbHNlLCJuYW1lIjoicG9wbyBwb3BvIiwicHJlZmVycmVkX3VzZXJuYW1lIjoicG9wbyIsImdpdmVuX25hbWUiOiJwb3BvIiwiZmFtaWx5X25hbWUiOiJwb3BvIiwiZW1haWwiOiJwb3BvQGdtYWlsLmNvbSJ9.OYXpfrLZw7sup8oVQ_Rul-NgJaJlZUaPe2A5AQT3MQow_iwX7YKfsYA63cDa27njQTpBGQFGQt_apvkg0Twx4nzMqP8BRu9nOgCX_3iFe2u7GYAzx6qrULiFktvb6h-aNIsjFRdPxYsfkF6ZZmMwrvdCdfBucNTLPaHeVj3rm7k4OCohHG6ep8M6Bq3X_8K_wYX1WNhOu8RVbFcVvH1mGy6xs80ExUEt6EnNWpiyIWebLvyXRK66d4cIlblPJAVIfy3bmjLaMKBZ0vK_QfwI5aL8Ao-t3fmRoWF8aHvA4wKp-vZuyX3QH2Uwv6JJgcvD3QWWQHj6xdom0-1kvleD1g",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{gateway}}/tool/all",
+							"host": [
+								"{{gateway}}"
+							],
+							"path": [
+								"tool",
+								"all"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "get all invoices Copy",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{gateway}}/invoice?ownerId=1",
+							"host": [
+								"{{gateway}}"
+							],
+							"path": [
+								"invoice"
+							],
+							"query": [
+								{
+									"key": "ownerId",
+									"value": "1"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "download invoice Copy",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{gateway}}/invoice/get/8c259ebb-f7f1-4c7e-a537-67bb82eca4e9",
+							"host": [
+								"{{gateway}}"
+							],
+							"path": [
+								"invoice",
+								"get",
+								"8c259ebb-f7f1-4c7e-a537-67bb82eca4e9"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "dev",
+			"item": [
+				{
+					"name": "direct - Tool Service",
+					"item": [
+						{
+							"name": "create new tool",
+							"request": {
+								"auth": {
+									"type": "noauth"
+								},
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"toolName\": \"tool1\",\n    \"description\": \"A powerful electric drill.\",\n    \"img\": \"https://example.com/images/drill.jpg\",\n    \"pricePerSecond\":0.09,\n    \"quantity\": 2,\n    \"toolStatus\": 0 \n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{tool_service}}/tool",
+									"host": [
+										"{{tool_service}}"
+									],
+									"path": [
+										"tool"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "get tool by id",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{tool_service}}/tool/1",
+									"host": [
+										"{{tool_service}}"
+									],
+									"path": [
+										"tool",
+										"1"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "get all tools",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{tool_service}}/tool/all",
+									"host": [
+										"{{tool_service}}"
+									],
+									"path": [
+										"tool",
+										"all"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "update tool",
+							"request": {
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"description\": \"soso\",\n    \"img\":\"newImage\",\n    \"quantity\":20,\n    \"pricePerMinute\":0.07,\n    \"toolStatus\":0 /*GOOD or 0, TO_BE_REPLACED or 1,BROKEN or 2, NOT_AVAILABLE or 3, NOT_SET or 4 */\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{tool_service}}/tool/5",
+									"host": [
+										"{{tool_service}}"
+									],
+									"path": [
+										"tool",
+										"5"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "Invoice Service",
+					"item": [
+						{
+							"name": "get all invoices",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "eyJhbGciOiJSUzI1NiIsInR5cCIgOiAiSldUIiwia2lkIiA6ICJqTmpwS3lSSjdPYU5TM1AwSkhrTVB5LUk5SURpRzNTcWdyckNWOS0zOXJjIn0.eyJleHAiOjE3Mzc4ODg1NzksImlhdCI6MTczNzg4ODI3OSwiYXV0aF90aW1lIjoxNzM3ODg4Mjc4LCJqdGkiOiJlNWM0MjliZC03YTI4LTRmMmEtOTIyMi0xYWNkMGU0YjhkMzYiLCJpc3MiOiJodHRwOi8vbG9jYWxob3N0OjgwODAvcmVhbG1zL2xhYm9ybGluayIsImF1ZCI6ImFjY291bnQiLCJzdWIiOiI4OTliMTU3ZS1kZGM5LTQ5MDItYWJjMC0wNDllMWExYTdkNjkiLCJ0eXAiOiJCZWFyZXIiLCJhenAiOiJ1c2VyLWNsaWVudCIsInNpZCI6IjU1ZDIzOGY2LTA1OGItNGIxNi1iNDQyLTEzMGI5ZTJkNmJjMyIsImFjciI6IjEiLCJhbGxvd2VkLW9yaWdpbnMiOlsiaHR0cDovL2xvY2FsaG9zdDozMDAwIl0sInJlYWxtX2FjY2VzcyI6eyJyb2xlcyI6WyJsYWJvci11c2VyIiwib2ZmbGluZV9hY2Nlc3MiLCJ1bWFfYXV0aG9yaXphdGlvbiIsImRlZmF1bHQtcm9sZXMtbGFib3JsaW5rIl19LCJyZXNvdXJjZV9hY2Nlc3MiOnsiYWNjb3VudCI6eyJyb2xlcyI6WyJtYW5hZ2UtYWNjb3VudCIsIm1hbmFnZS1hY2NvdW50LWxpbmtzIiwidmlldy1wcm9maWxlIl19fSwic2NvcGUiOiJwcm9maWxlIGVtYWlsIiwiZW1haWxfdmVyaWZpZWQiOmZhbHNlLCJuYW1lIjoieW95byB5b3lvIiwicHJlZmVycmVkX3VzZXJuYW1lIjoieW95byIsImdpdmVuX25hbWUiOiJ5b3lvIiwiZmFtaWx5X25hbWUiOiJ5b3lvIiwiZW1haWwiOiJ5b3lvQGdtYWlsLmNvbSJ9.eIRUd1-V99a344nS3jcvWGDjAzxoqa6XnIHE9rpdH2GxSYg4NLUTgECrRan7R5qi6X6azVxDmBxBDF3ObbBlyg9ePePDphsspYt7C1IXPQdqDwFZYwbonelj_KI10JfkoFsfC_8CKaFKUGW_8xiWCKXna7wNdIXCWSUCbSfor3BEDoAPyDu9HJILq4IPt2kKL1FAT7iL_Yv_uy-3zLzQQIUjWSZICithgXimuq6LDpzih-eOBMKqsXax9G0gi7RdgFuqNmZ5MzFvR-aWgk4FxFERRjB7AvV16rxTixWucHXbQwcaL4NiISgD_fjJMq8wVVfh1QfCdFh0Gxr8iiRFKw",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{invoice_service}}/invoice?ownerId=yoyo%20yoyo",
+									"host": [
+										"{{invoice_service}}"
+									],
+									"path": [
+										"invoice"
+									],
+									"query": [
+										{
+											"key": "ownerId",
+											"value": "yoyo%20yoyo"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "recored new invoice",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\"activityId\":\"anas\",\"ownerId\":2,\"items\":[{\"toolId\":1,\"quantity\":1,\"pricePerSecond\":0.02}],\"createdAt\":\"20 January 2025 03:47:58\",\"totalRentingTimeInSeconds\":40,\"totalPrice\":0.8,\"status\":\"COMPLETED\"}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{invoice_service}}/invoice",
+									"host": [
+										"{{invoice_service}}"
+									],
+									"path": [
+										"invoice"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "download invoice",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{invoice_service}}/invoice/get/8c259ebb-f7f1-4c7e-a537-67bb82eca4e9",
+									"host": [
+										"{{invoice_service}}"
+									],
+									"path": [
+										"invoice",
+										"get",
+										"8c259ebb-f7f1-4c7e-a537-67bb82eca4e9"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "KEYCLOAK - Get Access Token",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/x-www-form-urlencoded",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "grant_type",
+									"value": "authorization_code",
+									"type": "text"
+								},
+								{
+									"key": "code",
+									"value": "09dcbadb-b601-43ec-96b5-d481b97d271b.c454e015-6680-4795-9dac-0c1e6ced5165.bd44ee74-261c-434b-ba52-3ef7291c845e",
+									"type": "text"
+								},
+								{
+									"key": "redirect_uri",
+									"value": "http://localhost:3000/callback",
+									"type": "text"
+								},
+								{
+									"key": "client_id",
+									"value": "user-client",
+									"type": "text"
+								},
+								{
+									"key": "client_secret",
+									"value": "ziK9prgu78ICtUT7gGS2iZ6p43fHsmnw",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "http://localhost:8080/realms/laborlink/protocol/openid-connect/token",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"realms",
+								"laborlink",
+								"protocol",
+								"openid-connect",
+								"token"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Rent Tools",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "jwt-card",
+								"value": "anas",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "[\n    {\n        \"toolId\": 1,\n        \"quantity\": 1,\n        \"pricePerSecond\":0.07\n    }\n]\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{renting_service}}/activity/rent",
+							"host": [
+								"{{renting_service}}"
+							],
+							"path": [
+								"activity",
+								"rent"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Return Tools",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "jwt-card",
+								"value": "anas",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "[\n    {\n        \"toolId\": 1,\n        \"quantity\": 1,\n        \"pricePerSecond\":0.07\n    }\n]\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{renting_service}}/activity/return",
+							"host": [
+								"{{renting_service}}"
+							],
+							"path": [
+								"activity",
+								"return"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"packages": {},
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"packages": {},
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "gateway",
+			"value": "http://localhost:8087",
+			"type": "string"
+		},
+		{
+			"key": "tool_service",
+			"value": "http://localhost:8082",
+			"type": "string"
+		},
+		{
+			"key": "activity_service",
+			"value": "http://localhost:8083",
+			"type": "string"
+		},
+		{
+			"key": "renting_service",
+			"value": "http://localhost:8084",
+			"type": "string"
+		},
+		{
+			"key": "invoice_service",
+			"value": "http://localhost:8085",
+			"type": "string"
+		},
+		{
+			"key": "card_service",
+			"value": "http://localhost:8086",
+			"type": "string"
+		}
+	]
+}
