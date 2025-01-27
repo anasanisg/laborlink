@@ -315,8 +315,7 @@ export DB_CLIENT=mongodb://localhost:<your-port>/
 *Note* this service is a Flask Python backend so the dependencies should be installed first in order to execute the flask app. Please run the command bellow to install deps.
 
 ```bash
-# Create Virtual Env to a void the installation on your global Libs
-python3 -m venv backend/invoice-service/env 
+# This will create a virtual env under path backend/card-service & install Dependencies
 make install-is-deps
 ```
 
@@ -326,8 +325,7 @@ Laborlink card contains the userId encoded in a JWT token and also encoded as a 
 
 
 ```bash
-# Create Virtual Env to a void the installation on your global Libs
-python3 -m venv backend/invoice-service/env 
+# This will create a virtual env under path backend/card-service & install Dependencies
 make install-cs-deps 
 ```
 
@@ -359,7 +357,6 @@ make run-rms
 make run-as
 # Run Invoice Service - PYTHON
 make run-is
-
 # Run Card Service - PYTHON
 make run-cs
 ```
