@@ -96,7 +96,7 @@ package-gateway:
 
 
 run-gateway:
-	mkdir -p $(OUTPUT)
+	mkdir -p $(LOGS)
 	java -jar $(OUTPUT)/gateway-1.0.0.jar > $(LOGS)/gateway.log 2>&1
 
 
