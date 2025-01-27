@@ -141,7 +141,7 @@ Step 1: Please start keycloak
 make start-kc
 ```
 
-Step 2: After creation an adminstator account please create a LaborLink Realm like this image below:
+Step 2: After creation an adminstator account please create a Realm 'laborlink':
 
 <div style="text-align: center;">
   <img src="imgs/kc-0.png" alt="Description" width="200" height="200">
@@ -171,7 +171,7 @@ Step 7: From *Clients* tab on the left side, please create a client with id *use
   <img src="imgs/kc-3.png" alt="Description" width="full-width" height="200">
 </div>
 
-Step 8: A *Valid redirect URIs* should be our frontend which is http://localhost:3000/
+Step 8: A *Valid redirect URIs* should be our frontend which is http://localhost:3000/callback
 
 *Note* We can asign *labor-manager* role to any user manually through *Users* tab on the left side
 
@@ -203,7 +203,7 @@ make create-kafka-topics
 *Note* in LaborLink we are managing the events in three topics *tool.rental.events*, *activity.record.events*, *activity.complete.events*
 
 ### [2.6] Configure & Start Flink
-Flink Cluster in Laborlink used for ETL Stream Data Processing. It's used in general to process renting and returning activities to calculate the Total Price in realtime as well as to detect the customer return all the tools or not. Then publisch an event to notify the activity and invoice service.
+Flink Cluster in Laborlink used for ETL Stream Data Processing. It's used in general to process renting and returning activities to calculate the Total Price in realtime as well as to detect if the customer return all the tools or not. Then publisch an event to notify the activity and invoice service.
 
 
 ```bash
@@ -253,7 +253,7 @@ spring.security.oauth2.resourceserver.jwt.issuer-uri=http://localhost:8080/realm
 ```
 
 #### [2.7.2] Reproduce Tool Service 
-Tool Service is controlling with all CRUD Operations to register the tools in Laborlink Laager.
+Tool Service is controlling CRUD Operations to register the tools in Laborlink Laager.
 
 Please make sure the MariaDB JDBC configurations under path *backend/tool-service/src/main/java/resources/application-dev.properties* are configured to match your DB Configurations
 
@@ -269,8 +269,7 @@ make package-ts
 ```
 
 #### [2.7.3] Reproduce Renting Machine Service 
-Renting Machine Service is a simulation for legacy system where the users can interact with a monitor (We simulate the monitor-presentationLayer- with frontend). In this machine the user chose the tools he want to rent and scan his card to complete the process
-
+Renting Machine Service handles the operations where the user scan their own card.
 
 Please make sure the MariaDB JDBC configurations under path *backend/renting-machine-service/src/main/java/resources/application-dev.properties* are configured to match your DB Configurations
 
@@ -286,7 +285,7 @@ make package-rms
 ```
 
 #### [2.7.4] Reproduce Activity Service Service 
-Activity Service is used to track the Activities and their status in the Enterprise so the CRM can know clearly whats the current opened renting contracts and they have also the ability to now if the customer has return all tools with the same quantity or not.
+Activity Service is used to record and track items movement and the overall activities in the system
 
 Please make sure the MariaDB JDBC configurations under path *backend/activity-service/src/main/java/resources/application-dev.properties* are configured to match your DB Configurations
 
@@ -302,7 +301,8 @@ make package-as
 ```
 
 #### [2.7.5] Reproduce Invoice Service 
-Invoice Service form its name used to produce the an invoice for user related to the activity he made.
+Invoice Service used for generating Invoices for end users.
+
 
 *Note* this service is connected to NOSQL database to demonstrate a multiple DB EAI. 
 
