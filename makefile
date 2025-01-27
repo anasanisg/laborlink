@@ -1,4 +1,4 @@
-.PHONY: install-servers start-kc prepare-kafka start-kafka create-kafka-topics package-tool-rental-job start-flink stop-flink up-gateway package-gateway run-gateway up-ts package-ts run-ts up-rms package-rms run-rms up-as package-as run-as install-is-debs run-is
+.PHONY: install-servers start-kc prepare-kafka start-kafka create-kafka-topics package-tool-rental-job start-flink stop-flink up-gateway package-gateway run-gateway up-ts package-ts run-ts up-rms package-rms run-rms up-as package-as run-as install-is-deps run-is install-cs-deps run-cs
 
 # PATHS
 OUTPUT=out/
@@ -8,7 +8,10 @@ TS=backend/tool-service
 AS=backend/activity-service
 RMS=backend/renting-machine-service
 IS=backend/invoice-service
+CS=backend/card-service
 RFJ=backend/jobs/rental-flow-jobs/toolrentalflow/
+DASHBOARD=frontend/labor-dashboard
+MONITOR=frontend/renting-machine-monitor
 KEYCLOAK=backend/keycloak/bin
 KAFKA=backend/kafka/bin
 FLINK=backend/flink/bin
@@ -146,6 +149,7 @@ run-as:
 
 
 install-is-deps:
+	python3 -m venv $(IS)/env
 	tar -xzvf backend/kafka-python2.0.2-modified.tar
 	$(IS)/env/bin/pip install -r $(IS)/requirements.txt
 	$(IS)/env/bin/pip install  kafka-python-2.0.2/ 
@@ -154,3 +158,21 @@ install-is-deps:
 run-is:
 	mkdir -p $(LOGS)
 	@cd $(IS) && env/bin/python manage.py run > ../../$(LOGS)/invoice-service.log 2>&1
+
+
+install-cs-deps:
+	python3 -m venv $(CS)/env
+	$(CS)/env/bin/pip install -r $(CS)/requirements.txt
+
+
+run-cs:
+	mkdir -p $(LOGS)
+	@cd $(CS) && env/bin/python manage.py run > ../../$(LOGS)/card-service.log 2>&1
+
+start-dashboard:
+	@cd $(DASHBOARD) && npm install
+	@cd $(DASHBOARD) && npm run dev
+
+start-monitor:
+	@cd $(MONITOR) &&	npm install
+	@cd $(MONITOR) &&	npm run dev
