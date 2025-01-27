@@ -2,16 +2,16 @@
 
 ## Overview
 
-### Project Description
+### [1] Project Description
 LaborLink is a fully integratable enterprise system designed for renting labor tools to researchers, students, and hobbyists. It includes a powerful pipeline that effectively tracks customer activities, detects fraudulent behavior, and provides invoices to end customers. The system leverages modern technologies for communication and data processing and is built with future horizontal scaling in mind. Additionally, it supports integration with external third parties (e.g., delivery of labor cards or collaboration with other LaborLink provider companies).
 
-### Architecture: Event-Driven Design with Kafka as the Communication Backbone
+### [1.1] Architecture: Event-Driven Design with Kafka as an Events Backbone
 
 <div style="display: flex; justify-content: center; width: 100%;">
     <img src="imgs/Architecture.png" alt="Description" style="width: 100%; max-width: 100%;">
 </div>
 
-## Enviroment & Services
+### [1.2] Enviroment & Services
 
 Backend is generally based on Java and Python.
 
@@ -41,27 +41,28 @@ Backend is generally based on Java and Python.
 
 ✨ Keycloak --PORT:8080, UI: http://localhost:8080
 
-✨ Gateway --PORT:8087, UI:NONE, *However we hv provided a POSTMAN-COLLECTION*
+✨ Gateway --PORT:8087, UI:NONE, *However we provided a POSTMAN-COLLECTION for testing*
 
 ✨ Kafka --PORT:9092, UI:NONE
 
 ✨ Flink --PORT:8081, UI: http://localhost:8081/
 
-✨ Tool Service --PORT:8082, UI:, *However we hv provided a POSTMAN-COLLECTION*
+✨ Tool Service --PORT:8082, UI:, *However we provided a POSTMAN-COLLECTION for testing*
 
-✨ Renting Machine Service --PORT:8084, *However we hv provided a POSTMAN-COLLECTION*
+✨ Renting Machine Service --PORT:8084, *However we provided a POSTMAN-COLLECTION for testing*
 
-✨ Activity Service --PORT:8083,UI:, *However we hv provided a POSTMAN-COLLECTION*
+✨ Activity Service --PORT:8083,UI:, *However we provided a POSTMAN-COLLECTION for testing*
 
-✨ Invoice Service --PORT:8085,UI:, *However we hv provided a POSTMAN-COLLECTION*
+✨ Invoice Service --PORT:8085,UI:, *However we provided a POSTMAN-COLLECTION for testing*
 
-*Note* in common scenarios the activtiy, tool and invoice services are internal services and should be accessed only through API Gateway for authorization but we have also provide a postman collection for them for testing so in general:
-    - In Gateway provinding a Acess Token is Required.
-    - for Direct Calling internal services then providing Acess Token not required 
+✨ Labor User/Manager Dashboard --PORT:3000; http://localhost:3000/
 
-## Lunching Laborlink 
+✨ Labor Renting Machine Monitor --PORT:3000; http://localhost:3001/
 
-### Cloning Service and Submodules
+
+## [2] Lunching Laborlink 
+
+### [2.1] Cloning Service and Submodules
 
 *Cloning Labor Link*
 
@@ -77,7 +78,7 @@ git clone https://gitlab.w-hs.de/DevDynasty/eai/laborlink.git
 git submodule update --init --recursive --remote
 ```
 
-### Install External Servers
+### [2.2] Install External Servers
 
 👔 (108Mb) Apache Kafka 3.6.0 scala 2.13 *Install & Extract under path backend/kafka*
 
@@ -106,7 +107,7 @@ curl -L -o keycloak.zip https://github.com/keycloak/keycloak/releases/download/2
 ```
 
 
-### Install Databases
+### [2.3] Install Databases
 📈 MariaDB (212.3MB)
 📈 mongodb/brew/mongodb-community@6.0 (202.4MB)
 
@@ -118,14 +119,19 @@ brew install mongodb-community
 ```
 
 
-### Confirue KeyCloack IdentityProvider
-Keycloak is our IdentityProvider it's responsible of Authentication and managing roles for users. With keycloak we hv also the ability to integrate other third-part Organization (eg Other Laborlink-Service-Providers, Delivars Services etc) and Keycloak can handle and manage roles in perfect way.
+### [2.4] Confirue KeyCloack IdentityProvider
+Keycloak is a centralized identity and access management system. it's responsible of Authentication and managing roles for users. With keycloak we hv also the ability to integrate other third-part Organization (eg Other Laborlink-Service-Providers, Delivars Services etc) and Keycloak can handle and manage roles in perfect way.
 
 We have right know three Roles *Labor-User*,*Labor-Manager* and *Labor-Developer(optional)*.
 
-Auth Process In General .. user sends req payloaded with JWT >gateway>keycloak>gateway>routing.
+*Note* Now we are going to configure keycloak with Confendential Client.
+*Note* Laborlink frontend Support Server Side Rendering and the secret key will be stored in the server side.
 
-*Note* Now we are going to configure keycloak with Confendential Client, in our EAI the Client secret is existed in the frontend which not a best practice for authentication. In common scenarios a public client or an Authentication Service are used to handle Authentication from the frontend side.So this just for demonstration purposes to represent the authentication flow process.
+*Note* OAuth2 Flow
+  -- UI detect if the user logged in or not if not then the user will be redirect to keycloack Auth Url.
+  -- After login the user will be redirected again with Authorization Code to callback url in frontside for token exchange in Nuxt Server Side
+  -- After Token exchange the Acess & Refresch Token will be stored in the LocalStorage
+
 
 Reproduce Configurations:
 
@@ -178,8 +184,8 @@ Step 8: A *Valid redirect URIs* should be our frontend which is http://localhost
 
 
 
-### Configure & Start Kafka 
-Kafka acts as a centralized hub or a communication backbone in Laborlink. Its the main components that connect the internal services with each other.
+### [2.5] Configure & Start Kafka 
+Kafka acts as a communication Backbone between Services or a communication backbone in Laborlink. Its the main components that connect the internal services with each other.
 
 
 
@@ -196,12 +202,8 @@ make create-kafka-topics
 
 *Note* in LaborLink we are managing the events in three topics *tool.rental.events*, *activity.record.events*, *activity.complete.events*
 
-### Configure & Start Flink
+### [2.6] Configure & Start Flink
 Flink Cluster in Laborlink used for ETL Stream Data Processing. It's used in general to process renting and returning activities to calculate the Total Price in realtime as well as to detect the customer return all the tools or not. Then publisch an event to notify the activity and invoice service.
-
-We can say flink is a Cluster who host ETL Batch and Stream Data Processing jobs. We have no Batch Processing, however flink support eg (Batch Processing to collect the Data from all resources mongoDB, mariaDB etc organize them then insert the organized data in a DB warehouse).
-
-Current Existed Job is for stream Processing to detect Fraud & calculate total price out of the box.
 
 
 ```bash
@@ -233,9 +235,9 @@ Before Submitting the Job please make sure that Kafka broker is running then aft
 </div>
 
 
-### Reproduce Backend
+### [2.7] Reproduce Backend
 
-#### Reproduce Gateway
+#### [2.7.1] Reproduce Gateway
 Gateway is used in Laborlink for Authorization tokens comming from the Presentation Layers (Labor User/Admin Dashboard) through Keycloak. 
 
 ```bash
@@ -250,7 +252,7 @@ make package-gateway
 spring.security.oauth2.resourceserver.jwt.issuer-uri=http://localhost:8080/realms/<Your-Realm-Name>
 ```
 
-#### Reproduce Tool Service 
+#### [2.7.2] Reproduce Tool Service 
 Tool Service is controlling with all CRUD Operations to register the tools in Laborlink Laager.
 
 Please make sure the MariaDB JDBC configurations under path *backend/tool-service/src/main/java/resources/application-dev.properties* are configured to match your DB Configurations
@@ -266,7 +268,7 @@ spring.datasource.password=<password>
 make package-ts
 ```
 
-#### Reproduce Renting Machine Service 
+#### [2.7.3] Reproduce Renting Machine Service 
 Renting Machine Service is a simulation for legacy system where the users can interact with a monitor (We simulate the monitor-presentationLayer- with frontend). In this machine the user chose the tools he want to rent and scan his card to complete the process
 
 
@@ -283,7 +285,7 @@ spring.datasource.password=<password>
 make package-rms
 ```
 
-#### Reproduce Activity Service Service 
+#### [2.7.4] Reproduce Activity Service Service 
 Activity Service is used to track the Activities and their status in the Enterprise so the CRM can know clearly whats the current opened renting contracts and they have also the ability to now if the customer has return all tools with the same quantity or not.
 
 Please make sure the MariaDB JDBC configurations under path *backend/activity-service/src/main/java/resources/application-dev.properties* are configured to match your DB Configurations
@@ -299,7 +301,7 @@ spring.datasource.password=<password>
 make package-as
 ```
 
-#### Reproduce Invoice Service 
+#### [2.7.5] Reproduce Invoice Service 
 Invoice Service form its name used to produce the an invoice for user related to the activity he made.
 
 *Note* this service is connected to NOSQL database to demonstrate a multiple DB EAI. 
@@ -318,9 +320,19 @@ python3 -m venv backend/invoice-service/env
 make install-is-deps
 ```
 
+#### [2.7.6] Reproduce Card Service 
+We can assume that the card service is a Laborlink partner who print and deliver the Laborlink Cards.
+Laborlink card contains the userId encoded in a JWT token and also encoded as a QR Code
 
 
-### Starting Backend
+```bash
+# Create Virtual Env to a void the installation on your global Libs
+python3 -m venv backend/invoice-service/env 
+make install-cs-deps 
+```
+
+
+### [2.8] Starting Backend
 *Note* Please make sure first that kafka, flink and keyloak are running.
 
 **Note* Please make sure that the databases are working, if the installation is done through homebrew you can execute these commands to start the databases.
@@ -347,7 +359,39 @@ make run-rms
 make run-as
 # Run Invoice Service - PYTHON
 make run-is
+
+# Run Card Service - PYTHON
+make run-cs
 ```
 
 
-### Starting Frontend
+### [2.9] Starting Frontend
+
+#### [2.7.6] Start Laborlink Dashboard
+
+*Note* Please update first the Client-Secret in *frontend/labor-dashboard* with the new one from keycloak
+
+Dashboard: http://localhost:3000
+
+```bash
+# npm install & npm run dev 
+make start-dashboard
+```
+
+
+#### [2.7.7] Start Renting Machine Monitor
+
+Dashboard: http://localhost:3001
+
+```bash
+# npm install & npm run dev 
+make start-monitor
+```
+
+## [3] Testing Via Postman
+
+Postman Collection under path 
+
+*Note* In common scenarios the Activity, Tool, Card and Invoice services are internal services and should be accessed only through API Gateway for authorization but we have also provide a postman collection for them for testing so in general:
+    - In Gateway provinding a Acess Token is Required.
+    - for Direct Calling internal services then providing Acess Token not required.
