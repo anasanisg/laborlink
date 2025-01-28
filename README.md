@@ -392,3 +392,8 @@ Postman Collection under path
 *Note* In common scenarios the Activity, Tool, Card and Invoice services are internal services and should be accessed only through API Gateway for authorization but we have also provide a postman collection for them for testing so in general:
     - In Gateway provinding a Acess Token is Required.
     - for Direct Calling internal services then providing Acess Token not required.
+
+
+  <div style="display: flex; justify-content: center; width: 100%;">
+    <img src="imgs/Danke.jpeg" alt="Description" style="width: 100%; max-width: 100%;">
+</div>
