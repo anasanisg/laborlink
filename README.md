@@ -366,7 +366,7 @@ make run-cs
 
 #### [2.7.6] Start Laborlink Dashboard
 
-*Note* Please update first the Client-Secret in *frontend/labor-dashboard* with the new one from keycloak
+*Note* Please update first the Client-Secret in *frontend/labor-dashboard/server/api/auth/callback.ts* with the new one from keycloak
 
 Dashboard: http://localhost:3000
 
