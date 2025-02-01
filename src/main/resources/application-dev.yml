@@ -1,0 +1,80 @@
+spring:
+  cloud:
+    gateway:
+
+      routes:
+
+    # -------- Tool Service -----------------------
+
+        - id: tool-service-create-tool
+          uri: http://localhost:8082
+          predicates:
+            - Path=/tool
+          metadata:
+            cors:
+              allowedOrigins: "http://localhost:3000"
+              allowedMethods:
+                - POST
+              allowedHeaders: "*"
+              maxAge: 3600
+
+        - id: tool-service-get-update-tools
+          uri: http://localhost:8082
+          predicates:
+            - Path=/tool/*
+          metadata:
+            cors:
+              allowedMethods:
+                - GET
+                - PUT
+              allowedHeaders: "*"
+              maxAge: 3600
+
+    # -------- Invoice Service TODO -----------------------
+
+        - id: invoice-get-all
+          uri: http://localhost:8085
+          predicates:
+            - Path=/invoice
+          metadata:
+            cors:
+              allowedOrigins: "http://localhost:3000"
+              allowedMethods:
+                - GET
+              allowedHeaders: "*"
+              maxAge: 3600
+
+        - id: invoice-download
+          uri: http://localhost:8085
+          predicates:
+            - Path=/invoice/get/*
+          metadata:
+            cors:
+              allowedOrigins: "http://localhost:3000"
+              allowedMethods:
+                - GET
+              allowedHeaders: "*"
+              maxAge: 3600
+
+
+    # -------- Card Service -----------------------
+    
+        - id: card-service-obtain
+          uri: http://localhost:8086
+          predicates:
+            - Path=/obtain
+          metadata:
+            cors:
+              allowedOrigins: "http://localhost:3000"
+              allowedMethods:
+                - POST
+              allowedHeaders: "*"
+              maxAge: 3600
+
+              
+
+
+
+logging:
+  level:
+    org.springframework.cloud.gateway: DEBUG
