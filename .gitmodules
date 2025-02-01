@@ -1,6 +1,3 @@
-[submodule "backend/tool-service"]
-	path = backend/tool-service
-	url = https://gitlab.w-hs.de/DevDynasty/eai/tool-service.git
 [submodule "backend/activity-service"]
 	path = backend/activity-service
 	url = https://gitlab.w-hs.de/DevDynasty/eai/activity-service
