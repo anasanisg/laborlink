@@ -1,6 +1,3 @@
-[submodule "backend/jobs/rental-flow-jobs"]
-	path = backend/jobs/rental-flow-jobs
-	url = https://gitlab.w-hs.de/DevDynasty/eai/rental-flow-jobs
 [submodule "frontend/renting-machine-monitor"]
 	path = frontend/renting-machine-monitor
 	url = https://gitlab.w-hs.de/DevDynasty/eai/renting-machine-monitor
