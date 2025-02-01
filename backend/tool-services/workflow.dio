@@ -1,0 +1,142 @@
+<mxfile host="65bd71144e">
+    <diagram id="68aar5ydULK7WJvSZBac" name="Page-1">
+        <mxGraphModel dx="1488" dy="515" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="850" pageHeight="1100" math="0" shadow="0">
+            <root>
+                <mxCell id="0"/>
+                <mxCell id="1" parent="0"/>
+                <mxCell id="2" value="Tool Service" style="ellipse;whiteSpace=wrap;html=1;aspect=fixed;" vertex="1" parent="1">
+                    <mxGeometry x="90" y="180" width="80" height="80" as="geometry"/>
+                </mxCell>
+                <mxCell id="3" value="Kafka Cluster" style="shape=cylinder3;whiteSpace=wrap;html=1;boundedLbl=1;backgroundOutline=1;size=15;" vertex="1" parent="1">
+                    <mxGeometry x="390" y="86.2" width="60" height="280" as="geometry"/>
+                </mxCell>
+                <mxCell id="8" value="toolsTaked" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;" vertex="1" parent="1">
+                    <mxGeometry x="240" y="150" width="100" height="20" as="geometry"/>
+                </mxCell>
+                <mxCell id="11" value="toolsReturned" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;" vertex="1" parent="1">
+                    <mxGeometry x="240" y="270" width="100" height="20" as="geometry"/>
+                </mxCell>
+                <mxCell id="13" value="User" style="shape=umlActor;verticalLabelPosition=bottom;verticalAlign=top;html=1;outlineConnect=0;" vertex="1" parent="1">
+                    <mxGeometry x="-40" y="190" width="30" height="60" as="geometry"/>
+                </mxCell>
+                <mxCell id="14" value="" style="pointerEvents=1;shadow=0;dashed=0;html=1;strokeColor=none;fillColor=#4495D1;labelPosition=center;verticalLabelPosition=bottom;verticalAlign=top;align=center;outlineConnect=0;shape=mxgraph.veeam.monitor;" vertex="1" parent="1">
+                    <mxGeometry x="20" y="196.20000000000002" width="43.2" height="47.6" as="geometry"/>
+                </mxCell>
+                <mxCell id="15" value="" style="endArrow=none;dashed=1;html=1;dashPattern=1 3;strokeWidth=2;exitX=1;exitY=0.5;exitDx=0;exitDy=0;" edge="1" parent="1" source="8">
+                    <mxGeometry width="50" height="50" relative="1" as="geometry">
+                        <mxPoint x="320" y="110" as="sourcePoint"/>
+                        <mxPoint x="380" y="160" as="targetPoint"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="16" value="" style="endArrow=none;dashed=1;html=1;dashPattern=1 3;strokeWidth=2;exitX=1;exitY=0.5;exitDx=0;exitDy=0;" edge="1" parent="1" source="11">
+                    <mxGeometry width="50" height="50" relative="1" as="geometry">
+                        <mxPoint x="320" y="240" as="sourcePoint"/>
+                        <mxPoint x="380" y="280" as="targetPoint"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="17" value="" style="endArrow=none;dashed=1;html=1;dashPattern=1 3;strokeWidth=2;exitX=1;exitY=0;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="2" target="8">
+                    <mxGeometry width="50" height="50" relative="1" as="geometry">
+                        <mxPoint x="160" y="180" as="sourcePoint"/>
+                        <mxPoint x="210" y="130" as="targetPoint"/>
+                        <Array as="points">
+                            <mxPoint x="190" y="192"/>
+                            <mxPoint x="190" y="160"/>
+                        </Array>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="18" value="" style="endArrow=none;dashed=1;html=1;dashPattern=1 3;strokeWidth=2;exitX=1;exitY=1;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="2" target="11">
+                    <mxGeometry width="50" height="50" relative="1" as="geometry">
+                        <mxPoint x="180" y="270" as="sourcePoint"/>
+                        <mxPoint x="230" y="220" as="targetPoint"/>
+                        <Array as="points">
+                            <mxPoint x="190" y="250"/>
+                            <mxPoint x="190" y="280"/>
+                        </Array>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="19" value="" style="verticalLabelPosition=bottom;html=1;verticalAlign=top;align=center;strokeColor=none;fillColor=#00BEF2;shape=mxgraph.azure.sql_database;" vertex="1" parent="1">
+                    <mxGeometry x="111.25" y="66.2" width="37.5" height="50" as="geometry"/>
+                </mxCell>
+                <mxCell id="21" value="Workflow" style="swimlane;fontStyle=0;childLayout=stackLayout;horizontal=1;startSize=30;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+                    <mxGeometry x="-28.4" y="330" width="238.4" height="240" as="geometry"/>
+                </mxCell>
+                <mxCell id="22" value="1- The user starts the process by chosen the tools he want to rent" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=4;spacingRight=4;overflow=hidden;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;rotatable=0;whiteSpace=wrap;html=1;" vertex="1" parent="21">
+                    <mxGeometry y="30" width="238.4" height="30" as="geometry"/>
+                </mxCell>
+                <mxCell id="28" value="2- When the user finish chosen process through a monitor he scan his cards" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=4;spacingRight=4;overflow=hidden;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;rotatable=0;whiteSpace=wrap;html=1;" vertex="1" parent="21">
+                    <mxGeometry y="60" width="238.4" height="30" as="geometry"/>
+                </mxCell>
+                <mxCell id="29" value="3- Each cards has a JWT Token encoded as a QR Code" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=4;spacingRight=4;overflow=hidden;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;rotatable=0;whiteSpace=wrap;html=1;" vertex="1" parent="21">
+                    <mxGeometry y="90" width="238.4" height="30" as="geometry"/>
+                </mxCell>
+                <mxCell id="30" value="4- JWT Token will be validated first from an Authorization Service" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=4;spacingRight=4;overflow=hidden;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;rotatable=0;whiteSpace=wrap;html=1;" vertex="1" parent="21">
+                    <mxGeometry y="120" width="238.4" height="30" as="geometry"/>
+                </mxCell>
+                <mxCell id="31" value="5- Tool Service Retrieve the Tool Details from a DB, and Group the Data in JSON" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=4;spacingRight=4;overflow=hidden;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;rotatable=0;whiteSpace=wrap;html=1;" vertex="1" parent="21">
+                    <mxGeometry y="150" width="238.4" height="30" as="geometry"/>
+                </mxCell>
+                <mxCell id="32" value="6- an toolsTaked Event will be Publisched" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=4;spacingRight=4;overflow=hidden;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;rotatable=0;whiteSpace=wrap;html=1;" vertex="1" parent="21">
+                    <mxGeometry y="180" width="238.4" height="30" as="geometry"/>
+                </mxCell>
+                <mxCell id="38" value="7- when userReturn Tools an toolsReturned Event is Publisched&amp;nbsp;" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=4;spacingRight=4;overflow=hidden;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;rotatable=0;whiteSpace=wrap;html=1;" vertex="1" parent="21">
+                    <mxGeometry y="210" width="238.4" height="30" as="geometry"/>
+                </mxCell>
+                <mxCell id="36" value="" style="rounded=1;whiteSpace=wrap;html=1;fillColor=none;dashed=1;" vertex="1" parent="1">
+                    <mxGeometry x="235" y="124.66" width="110" height="190.67" as="geometry"/>
+                </mxCell>
+                <mxCell id="37" value="Compacted Topic" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;dashed=1;" vertex="1" parent="1">
+                    <mxGeometry x="260" y="86.2" width="60" height="30" as="geometry"/>
+                </mxCell>
+                <mxCell id="39" value="" style="endArrow=none;dashed=1;html=1;dashPattern=1 3;strokeWidth=2;exitX=0.5;exitY=0;exitDx=0;exitDy=0;" edge="1" parent="1" source="2">
+                    <mxGeometry width="50" height="50" relative="1" as="geometry">
+                        <mxPoint x="80" y="166.2" as="sourcePoint"/>
+                        <mxPoint x="130" y="116.2" as="targetPoint"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="40" value="" style="endArrow=classic;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;" edge="1" parent="1" source="36">
+                    <mxGeometry width="50" height="50" relative="1" as="geometry">
+                        <mxPoint x="330" y="450" as="sourcePoint"/>
+                        <mxPoint x="360" y="440" as="targetPoint"/>
+                        <Array as="points">
+                            <mxPoint x="290" y="440"/>
+                        </Array>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="41" value="Compacted Topic, Follow Rentention Policy Compacted in Kafka" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;dashed=1;" vertex="1" parent="1">
+                    <mxGeometry x="370" y="430" width="150" height="30" as="geometry"/>
+                </mxCell>
+                <mxCell id="42" value="" style="aspect=fixed;perimeter=ellipsePerimeter;html=1;align=center;shadow=0;dashed=0;spacingTop=3;image;image=img/lib/active_directory/database_server.svg;rounded=1;fillColor=none;" vertex="1" parent="1">
+                    <mxGeometry x="30" y="66" width="41" height="50" as="geometry"/>
+                </mxCell>
+                <mxCell id="43" value="MariaDB" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;dashed=1;" vertex="1" parent="1">
+                    <mxGeometry x="100" y="36" width="60" height="30" as="geometry"/>
+                </mxCell>
+                <mxCell id="44" value="Authorization Server" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;dashed=1;" vertex="1" parent="1">
+                    <mxGeometry x="11.599999999999994" y="36" width="60" height="30" as="geometry"/>
+                </mxCell>
+                <mxCell id="45" value="" style="endArrow=none;dashed=1;html=1;dashPattern=1 3;strokeWidth=2;" edge="1" parent="1" target="2">
+                    <mxGeometry width="50" height="50" relative="1" as="geometry">
+                        <mxPoint x="40" y="120" as="sourcePoint"/>
+                        <mxPoint x="110" y="140" as="targetPoint"/>
+                        <Array as="points">
+                            <mxPoint x="40" y="160"/>
+                            <mxPoint x="100" y="160"/>
+                        </Array>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="46" value="" style="endArrow=none;dashed=1;html=1;dashPattern=1 3;strokeWidth=2;" edge="1" parent="1" target="14">
+                    <mxGeometry width="50" height="50" relative="1" as="geometry">
+                        <mxPoint y="220" as="sourcePoint"/>
+                        <mxPoint x="50" y="190" as="targetPoint"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="47" value="" style="endArrow=none;dashed=1;html=1;dashPattern=1 3;strokeWidth=2;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="14" target="2">
+                    <mxGeometry width="50" height="50" relative="1" as="geometry">
+                        <mxPoint x="50" y="310" as="sourcePoint"/>
+                        <mxPoint x="100" y="260" as="targetPoint"/>
+                    </mxGeometry>
+                </mxCell>
+            </root>
+        </mxGraphModel>
+    </diagram>
+</mxfile>

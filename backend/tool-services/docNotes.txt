@@ -1,0 +1,69 @@
+
+
+Tool Service
+
+Section 1 (About):
+
+This Service is used
+    (Related with MAIN CRUD Operations)
+    -- Add and Provide Information about tools in LaborStore/Lager like(name, rent-price per minute, img, desc, quantites)
+    -- Track and Update the tools in the DB (Labor Lager) and their quantities
+    -- Track the Status of the Tool
+
+    (External Operations)
+    -- STILL IN PROGRESS
+
+Section 2 Architecture and Technologies:
+    -- The Architecture for this Service MVC 
+    -- Maven @3.9.9
+    -- JAVA @openjdk 17.0.13 2024-10-15 LTS provided by Amazon (Corretto)
+    -- Spring Framework
+    -- Connected with MariaDB 
+
+
+Section 3 Special Code Snippets:
+
+    -- Centralized Handling for Exceptions
+
+    -- ModelMapper Maven Package for DTO to Entities and Entities to DTO in order to
+        -- Isolate the Enitties from Responses as Possible
+            -- Respons of Isolating the DTOS away from Entities
+                -- Encapsulation and Decoupling; DTOs decouple the database entities from the API responses, ensuring that internal database structures are not exposed directly.
+                -- Security; by avoid exposing unecessarly field from the database
+                -- Customize Responses depend on need.
+                -- Make the Scaling process and integrate third parties easier and safer
+
+    -- Unified Response Shape for the Presentation Layer
+
+
+Section 4 User Renting Flow:
+
+    -- We have two tables tools, temporary_contract
+
+    -- Renting Flow 
+        -- User scan his card that contains a JWT Token (the role and the id injected in JWT)
+        -- System Autherize JWT 
+        -- A Request from Presentation Layer payloaded with the list of the tools the user want to rend 
+        -- Business logic deals with the calculations of Quantities and Stock in labor lager 
+        -- a temprory Contract stored in the dataset which link the user with the activity and this will be deleted when user return the tools
+        -- DTO for activity is created and published to two topic one for Renting Process (Which is Kafka Log compacted topic and compacted by uniqueid which is activityId) and another event to recored the activity for crm and analitics and so on
+        -- Because topic tool.rental.events is compacted by the activity id we need at least to store a temprory data that link the userid and the activityId togther because when the user return the tools we can have the activityId to publish to the same compacted topic 
+
+
+
+
+Section 5 : 
+- We Should mention and take about the Compacted topic in kafka and The Log Compacted Rentention Policy
+-  ./kafka-topics.sh --create \
+    --bootstrap-server localhost:9092 \
+    --topic tool.rental.events \
+    --partitions 1 \
+    --replication-factor 1 \
+    --config cleanup.policy=compact \
+    --config segment.ms=604800000 \
+    --config retention.ms=-1
+
+policy=compact
+rentention.ms=-1 will keep the topic for infinit time the reason of this we dont know how much the user will keep the tools and we dont want to miss any data
+
+
