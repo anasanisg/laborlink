@@ -1,0 +1,35 @@
+
+- Tool Rental Job 
+        -- Workflow 
+            -- This jobs has two Subset Tasks in timeline (Consuming Compacted Topic tool.rental.events, and Processing the Compacted topic when they are finsihed with publising topic to activity service 
+            -- Subtask 1 Consuming Compacted Topic tool.rental.events
+                -- SHOW CODE BLOCK 
+                -- tool.rental.events is compact two different events when the user rent a tool the first event is published to Kafka when the user return a tool another event is published to kafka . these two events are compacted under tool.rental.events 
+                -- So the first subtask is to deserialize tool.rental.events
+            -- Subtask 2 Processing the Compacted Event as Statefull Variables 
+                -- SHOW CODE BLOCK 
+                -- The Two events (renting, return ) in tool.rental.events will be keyed through a UniqueID or UniqueGroupKey before registering it as a Statefull Chunk/Variable
+                -- The Both Events are ActivityDTO and will be keyed by activityId
+                -- So When an event arrived to tool.rental.events flink check first will check if the UniqueId Is existed for the current DTO  if not flink update the state
+                -- If it existed? okey if it existed flink will get the old one and the new one and then calculate the total price, and Small Fraued Detection logic which check if the user return all tools with the right quantities or not and then emit two other events to the Kafka Procudeces to publish two event 
+                    -- First one to activity.complete.events to notify the activity service to recored this for CRM 
+                    -- Invoice Service will read activity.complete.events and recored invoice
+
+        -- why noWatermark is applied as a strategy for listening to the Compacted Topic 
+                   The events are irrelevant to this Job so flink will process the first arrived event
+                     without checking actually the Timestamp for the arrivals event 
+                     So for example: 
+                     if we have three events the Apache Flink will process the first one arrive to the broker 
+                     without comparing the timestamp.
+                     If noWatermark stragies not enabled flink will restrict to the default behavoiur 
+                     and runs in processing-time-mode
+                     EXAMPLE 
+                     Lets say we have three Events 
+                     - nowatermarkStrategy applied flink process the first arrival event and ignore timespamp
+                     - processing-time-mode(defualt by flink) and by defailt its defined to 5 seconds 
+                     in this case flink create a temporarly processing chunk for 5 seconds if this not configured
+                     and if three events arrived before the 5 seconds flink will process first the oldest timestamp 
+                     when the 5 seconds finsihed and a fourth event arrived even when its older than the three events 
+                     it will be processed as a last events because the processing chunk ended
+
+** Transient So the Variable not to be serialized through flink or stored in Flink internal db 
