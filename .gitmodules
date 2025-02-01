@@ -1,6 +1,3 @@
-[submodule "backend/invoice-service"]
-	path = backend/invoice-service
-	url = https://gitlab.w-hs.de/DevDynasty/eai/invoice-service
 [submodule "backend/renting-machine-service"]
 	path = backend/renting-machine-service
 	url = https://gitlab.w-hs.de/DevDynasty/eai/renting-machine-service
